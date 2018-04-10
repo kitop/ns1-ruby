@@ -1,5 +1,8 @@
 require "bundler/setup"
 require "ns1"
+require "webmock/rspec"
+
+Dir[File.expand_path("../support/**/*.rb", __FILE__)].each { |f| puts f; require f }
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -11,4 +14,8 @@ RSpec.configure do |config|
   config.expect_with :rspec do |c|
     c.syntax = :expect
   end
+
+  WebMock.disable_net_connect!(net_http_connect_on_start: true)
+
+  config.include SpecHelpers::StubRequestHelpers
 end
