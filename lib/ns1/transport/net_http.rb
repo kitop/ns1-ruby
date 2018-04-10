@@ -5,6 +5,7 @@ require "openssl"
 require "json"
 require "uri"
 require "ns1/transport"
+require "ns1/response"
 
 module NS1
   module Transport
@@ -25,8 +26,14 @@ module NS1
       private
 
       def process_response(response)
-        JSON.parse(response.body)
-      rescue
+        body = JSON.parse(response.body)
+        case response
+        when Net::HTTPOK
+          NS1::Response::Success.new(body)
+        else
+          NS1::Response::Error.new(body)
+        end
+      rescue JSON::ParserError
         raise NS1::Transport::ResponseParseError
       end
 
