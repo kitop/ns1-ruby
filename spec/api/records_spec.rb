@@ -14,9 +14,10 @@ RSpec.describe NS1::API::Records do
     it "requests GET /v1/zones/:zone/:domain/:type" do
       request = stub_api(:get, "/v1/zones/example.com/www.example.com/A")
 
-      client.record("example.com", "www.example.com", "A")
+      response = client.record("example.com", "www.example.com", "A")
 
       expect(request).to have_been_requested
+      expect(response.status).to eq 200
     end
   end
 
@@ -38,9 +39,10 @@ RSpec.describe NS1::API::Records do
       request = stub_api(:put, "/v1/zones/example.com/www.example.com/A")
                   .with(body: JSON.dump(expected_body))
 
-      client.create_record("example.com", "www.example.com", "A", { answers: [] })
+      response = client.create_record("example.com", "www.example.com", "A", { answers: [] })
 
       expect(request).to have_been_requested
+      expect(response.status).to eq 200
     end
   end
 
@@ -50,9 +52,10 @@ RSpec.describe NS1::API::Records do
       request = stub_api(:post, "/v1/zones/example.com/www.example.com/CNAME")
                   .with(body: JSON.dump(expected_body))
 
-      client.modify_record("example.com", "www.example.com", "CNAME", { use_client_subnet: false } )
+      response = client.modify_record("example.com", "www.example.com", "CNAME", { use_client_subnet: false } )
 
       expect(request).to have_been_requested
+      expect(response.status).to eq 200
     end
   end
 
@@ -60,9 +63,10 @@ RSpec.describe NS1::API::Records do
     it "requests DELETE /v1/zones/:zone/:domain/:type" do
       request = stub_api(:delete, "/v1/zones/example.com/www.example.com/CNAME")
 
-      client.delete_record("example.com", "www.example.com", "CNAME")
+      response = client.delete_record("example.com", "www.example.com", "CNAME")
 
       expect(request).to have_been_requested
+      expect(response.status).to eq 200
     end
   end
 end

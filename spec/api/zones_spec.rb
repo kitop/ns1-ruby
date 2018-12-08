@@ -24,9 +24,10 @@ RSpec.describe NS1::API::Zones do
     it "requests GET /v1/zones" do
       request = stub_api(:get, "/v1/zones/example.com")
 
-      client.zone("example.com")
+      response = client.zone("example.com")
 
       expect(request).to have_been_requested
+      expect(response.status).to eq 200
     end
   end
 
@@ -42,9 +43,10 @@ RSpec.describe NS1::API::Zones do
       request = stub_api(:put, "/v1/zones/example.com")
                   .with(body: JSON.dump(expected_body))
 
-      client.create_zone("example.com")
+      response = client.create_zone("example.com")
 
       expect(request).to have_been_requested
+      expect(response.status).to eq 200
     end
   end
 
@@ -54,9 +56,10 @@ RSpec.describe NS1::API::Zones do
       request = stub_api(:post, "/v1/zones/example.com")
                   .with(body: JSON.dump(expected_body))
 
-      client.modify_zone("example.com", ttl: 600)
+      response = client.modify_zone("example.com", ttl: 600)
 
       expect(request).to have_been_requested
+      expect(response.status).to eq 200
     end
   end
 
@@ -64,9 +67,10 @@ RSpec.describe NS1::API::Zones do
     it "requests DELETE /v1/zones/:zone" do
       request = stub_api(:delete, "/v1/zones/example.com")
 
-      client.delete_zone("example.com")
+      response = client.delete_zone("example.com")
 
       expect(request).to have_been_requested
+      expect(response.status).to eq 200
     end
   end
 end

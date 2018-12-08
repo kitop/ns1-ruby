@@ -39,6 +39,7 @@ RSpec.describe NS1::Transport::NetHttp do
       response = transport.request("GET", "/example")
 
       expect(response).to be_a NS1::Response::Success
+      expect(response.status).to eq 200
     end
 
     it "returns NS1::Response::Error on non-200 response" do
@@ -47,6 +48,7 @@ RSpec.describe NS1::Transport::NetHttp do
       response = transport.request("GET", "/example")
 
       expect(response).to be_a NS1::Response::Error
+      expect(response.status).to eq 400
     end
   end
 end

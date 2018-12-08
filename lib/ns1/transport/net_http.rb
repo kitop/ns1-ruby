@@ -29,9 +29,9 @@ module NS1
         body = JSON.parse(response.body)
         case response
         when Net::HTTPOK
-          NS1::Response::Success.new(body)
+          NS1::Response::Success.new(body, response.code.to_i)
         else
-          NS1::Response::Error.new(body)
+          NS1::Response::Error.new(body, response.code.to_i)
         end
       rescue JSON::ParserError
         raise NS1::Transport::ResponseParseError
