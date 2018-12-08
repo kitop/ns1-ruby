@@ -8,6 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = NS1::VERSION
   spec.authors       = ["Esteban Pastorino"]
   spec.email         = ["ejpastorino@gmail.com"]
+  spec.license       = "MIT"
 
   spec.summary       = %q{NS1 API Client}
   spec.description   = %q{NS1 API Client}
