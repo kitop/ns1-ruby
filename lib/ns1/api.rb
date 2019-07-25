@@ -12,7 +12,10 @@ module NS1
     def self.included(base)
       base.send :include,
         NS1::API::Zones,
-        NS1::API::Records
+        NS1::API::Records,
+        NS1::API::Account,
+        NS1::API::Stats,
+        NS1::API::Jobs
     end
 
   end

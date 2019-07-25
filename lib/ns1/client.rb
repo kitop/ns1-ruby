@@ -6,7 +6,9 @@ require "ns1/error"
 
 module NS1
   class Client
+
     include NS1::API
+
     BASE_URL = "https://api.nsone.net"
 
     def initialize(api_key, base_url: BASE_URL, logger: nil)
@@ -45,5 +47,19 @@ module NS1
         raise MissingParameter, "Missing key(s): #{missing.join(", ")}"
       end
     end
+
+    # Helper to support `domain` name with or without the zone name.
+    # e.g. zone: example.com domain: www will generate domain: www.example.com
+    def normalize_names!(zone, domain = "")
+      no_dot!(zone, domain)
+      domain << ".#{zone}" unless domain.empty? || domain.include?(zone)
+    end
+
+    # Removes trailing dot from all Strings given
+    def no_dot!(*array)
+      array.map {|a| a.chop! if a[/\.$/] != nil}
+      array
+    end
+
   end
 end

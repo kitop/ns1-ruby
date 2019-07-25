@@ -26,23 +26,27 @@ client = NS1::Client.new("your api key")
 
 # ZONES
 
+## Zone string can be: 'example.com.' or 'example.com'
+
 # Get all active zones and basic zone configuration details for each.
-client.zones 
+client.zones
 
 # Get a single active Zone and its basic configuration details.
 client.zone("example.com")
 
 # Create a new DNS zone
 # For details on configuration options, see https://ns1.com/api#create-a-new-dns-zone
-client.create_zone("yourdomain.com", { optional: :params }) 
+client.create_zone("yourdomain.com", { optional: :params })
 
 # Modify basic details of a DNS zone
-client.modify_zone("yourdomain.com", { refresh: 3600 }) 
+client.modify_zone("yourdomain.com", { refresh: 3600 })
 
 # Delete an existing DNS zone and all records in the zone
-client.delete_zone("yourdomain.com") 
+client.delete_zone("yourdomain.com")
 
 # RECORDS
+
+## Record string can be: 'www.example.com.', 'www.example.com' or 'www'
 
 # Get full configuration for a DNS record
 client.record("example.com", "www.example.com", "A")
