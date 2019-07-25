@@ -38,7 +38,7 @@ RSpec.describe NS1::API::Zones do
       }.to raise_error NS1::MissingParameter
     end
 
-    it "requests PUT /v1/zones" do
+    it "requests PUT /v1/zones/:zone" do
       expected_body = { zone: "example.com" }
       request = stub_api(:put, "/v1/zones/example.com")
                   .with(body: JSON.dump(expected_body))

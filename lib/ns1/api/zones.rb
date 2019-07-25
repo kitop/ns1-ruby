@@ -31,7 +31,6 @@ module NS1
       #
       # @param [required, String] zone zone name
       # @param [Hash] params
-      # @option params [required, String] :zone zone name
       #
       # For all the zone options @see [NS1 API - create-a-new-dns-zone](https://jsapi.apiary.io/apis/ns1api/reference/zones-and-records/zone/create-a-new-dns-zone.html)
       #
@@ -39,7 +38,6 @@ module NS1
       #
       def create_zone(zone, params = {})
         raise NS1::MissingParameter, "zone cannot be blank" if blank?(zone)
-        validate_required!(params, :zone)
         params = params.merge(zone: zone)
         perform_request(HTTP_PUT, "/v1/zones/#{zone}", params)
       end
