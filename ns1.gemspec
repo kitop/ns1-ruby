@@ -4,15 +4,15 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "ns1/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "ns1"
+  spec.name          = "ns-1"
   spec.version       = NS1::VERSION
   spec.authors       = ["Esteban Pastorino"]
   spec.email         = ["ejpastorino@gmail.com"]
   spec.license       = "MIT"
 
   spec.summary       = %q{NS1 API Client}
-  spec.description   = %q{NS1 API Client}
-  spec.homepage      = "https://github.com/kitop/ns1"
+  spec.description   = %q{Based on kitop ns1 gem}
+  spec.homepage      = "https://github.com/benkap/ns1-ruby"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
     f.match(%r{^(test|spec|features|tmp)/})
