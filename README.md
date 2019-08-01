@@ -2,6 +2,10 @@
 
 [NS1](https://ns1.com/) API Client
 
+Based on and Forked from [kitop/ns1-ruby](https://github.com/kitop/ns1-ruby) 
+1. Added few API calls (mainly QPS/Usage)
+2. Added yarddocs according to [NS1 API](https://ns1.com/api)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -26,23 +30,27 @@ client = NS1::Client.new("your api key")
 
 # ZONES
 
+## Zone string can be: 'example.com.' or 'example.com'
+
 # Get all active zones and basic zone configuration details for each.
-client.zones 
+client.zones
 
 # Get a single active Zone and its basic configuration details.
 client.zone("example.com")
 
 # Create a new DNS zone
 # For details on configuration options, see https://ns1.com/api#create-a-new-dns-zone
-client.create_zone("yourdomain.com", { optional: :params }) 
+client.create_zone("yourdomain.com", { optional: :params })
 
 # Modify basic details of a DNS zone
-client.modify_zone("yourdomain.com", { refresh: 3600 }) 
+client.modify_zone("yourdomain.com", { refresh: 3600 })
 
 # Delete an existing DNS zone and all records in the zone
-client.delete_zone("yourdomain.com") 
+client.delete_zone("yourdomain.com")
 
 # RECORDS
+
+## Record string can be: 'www.example.com.', 'www.example.com' or 'www'
 
 # Get full configuration for a DNS record
 client.record("example.com", "www.example.com", "A")
@@ -66,4 +74,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kitop/ns1.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/kitop/ns1](https://github.com/kitop/ns1).
