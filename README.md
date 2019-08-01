@@ -2,6 +2,10 @@
 
 [NS1](https://ns1.com/) API Client
 
+Based on and Forked from [kitop/ns1-ruby](https://github.com/kitop/ns1-ruby) 
+1. Added few API calls (mainly QPS/Usage)
+2. Added yarddocs according to [NS1 API](https://ns1.com/api)
+
 ## Installation
 
 Add this line to your application's Gemfile:
@@ -70,4 +74,4 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/kitop/ns1.
+Bug reports and pull requests are welcome on GitHub at [https://github.com/kitop/ns1](https://github.com/kitop/ns1).
